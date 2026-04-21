@@ -1,0 +1,25 @@
+name: Discord Release Notify
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Rich Notification
+        uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          embed-title: "🚀 Опубликован новый релиз: ${{ github.event.release.name }}"
+          embed-url: ${{ github.event.release.html_url }}
+          embed-color: "3066993" # Красивый зеленый цвет
+          embed-description: |
+            **Версия:** `${{ github.event.release.tag_name }}`
+            **Автор:** ${{ github.actor }}
+
+            **Список изменений:**
+            ${{ github.event.release.body }}
+          embed-footer-text: "Репозиторий: ${{ github.repository }}"
+          embed-thumbnail-url: "https://githubassets.com"
