@@ -45,7 +45,7 @@ Old-Arizona-11.04.2026/
 1. Убедитесь, что у вас установлены MoonLoader и ModLoader.
 2. Скопируйте содержимое папки `moonloader/` в директорию `moonloader/` вашей игры.
 3. Скопируйте содержимое папки `modloader/` в директорию `modloader/` вашей игры.
-4. Поместите `samp-cursor-patch.asi` в корневую папку GTA: San Andreas. или bin\arizona
+4. Поместите `samp-cursor-patch.asi` в корневую папку GTA: San Andreas или bin\arizona.
 5. Запустите игру и подключитесь к серверу Arizona RP.
 
 ---
