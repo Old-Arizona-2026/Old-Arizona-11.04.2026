@@ -81,11 +81,16 @@ local function process_event(bs, callback, struct, ignorebits)
 		return false -- consume packet
 	end
 	if bs ~= 0 and type(result) == 'table' then
+		if type(struct[3]) ~= 'function' then
+			for i = #result + 1, #args do
+				result[i] = args[i]
+			end
+			assert(#struct - 1 == #result)
+		end
 		raknetBitStreamSetWriteOffset(bs, ignorebits or 0)
 		if type(struct[3]) == 'function' then
 			struct[3](bs, result) -- call custom writing function
 		else
-			assert(#struct - 1 == #result)
 			for i = 2, #struct do
 				local _, t = next(struct[i]) -- type
 				write_data(bs, t, result[i - 1])

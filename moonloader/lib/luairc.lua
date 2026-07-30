@@ -11,8 +11,6 @@ local tonumber = tonumber
 local type = type
 local pcall = pcall
 
-local print = print
-
 module "irc"
 
 local meta = {}
@@ -182,28 +180,9 @@ function meta:think()
 	end
 end
 
-
-function meta:jabad(nick, channel)
-	local handler = handlers['JOIN']
-	if handler then
-		return handler(self, nick, channel)
-	end
-end
-
-function meta:jaba(nick, channel)
-	local handler = handlers['jaba']
-	if handler then
-		return handler(self, nick, channel)
-	end
-end
-
 local handlers = handlers
 
 function meta:handle(prefix, cmd, params)
-	print(cmd)
-	if cmd == 'MODE' then
-		print('cmd '..cmd..' params '..unpack(params)..' prefix '..prefix)
-	end
 	local handler = handlers[cmd]
 	if handler then
 		return handler(self, prefix, unpack(params))
