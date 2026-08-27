@@ -105,9 +105,10 @@ function loadDll()
 end
 
 function sampev.onShowDialog(id, style, title, button1, button2, text)
-    if style == 6 then
-        title = convert_money_tags(title)
-        text = convert_money_tags(text)
+    if style >= 6 then
+--        title = convert_money_tags(title)
+--        text = convert_money_tags(text)
+        print("dialog id"..id, style, title, text, button1, button2)
         return {id, 1, title, button1, button2, text}
     end
 end
